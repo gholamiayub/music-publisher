@@ -1,0 +1,15 @@
+{% extends "_base.html" %}
+
+{% block title %}Search{% endblock %}
+
+{% block content %}
+<h1>Search Results</h1>
+<br>
+  {% for song in song_list %}
+    <div>
+      <br>
+      <h3><a href="{{ song.get_absolute_url}}">{{ song.name }}</a></h3>
+      <p>{{ song.album }}</p>
+    </div>
+  {% endfor %}
+{% endblock content %}

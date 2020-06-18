@@ -1,0 +1,49 @@
+{% extends '_base.html' %}
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+<section class="hero">
+    <figure class="image">
+        <img src="https://images.pexels.com/photos/167636/pexels-photo-167636.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
+    </figure>
+</section>
+<!-- <section class="section">
+    <div class="container has-text-centered">
+        <h2 class="title">Contact</h2>
+
+        <form method="post" action="{% url "musics:contact" %}">
+          {% csrf_token %}
+          {% include 'includes/contact_form.html' with form=form %}
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</section> -->
+
+<footer class="footer">
+    <div class="container">
+        <div class="content has-text-centered">
+            <p>
+                <a href="">
+                    <i class="fab fa-facebook-square fa-2x"></i>
+                </a>
+                <a href="">
+                    <i class="fab fa-twitter-square fa-2x"></i>
+                </a>
+                <a href="">
+                    <i class="fab fa-instagram fa-2x"></i>
+                </a>
+                <a href="">
+                    <i class="fab fa-snapchat fa-2x"></i>
+                </a>
+            </p>
+            <p>
+                <a href="https://bulma.io">
+                    <img src="https://bulma.io/images/made-with-bulma.png" alt="Made with Bulma" width="128" height="24">
+                </a>
+            </p>
+        </div>
+    </div>
+</footer>
+<script src="bulma.js"></script>
+{% endblock content %}

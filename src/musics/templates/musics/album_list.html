@@ -1,0 +1,51 @@
+{% extends '_base.html' %}
+
+{% block title %}Albums{% endblock %}
+
+{% block content %}
+    {% if albums %}
+    <section class="section">
+    {% for album in albums %}
+      <div class="columns">
+       <ul>
+        <div class="column">
+          <li><a href="{{ album.get_absolute_url }}">{{ album.name }}</a></li>
+          <p>
+            Tags:
+            {% for tag in album.tags.all %}
+              <a href="{% url "musics:songs_list_by_tag" tag.slug %}">
+                {{ tag.name }}
+              </a>
+              {% if not forloop.last %}, {% endif %}
+            {% endfor %}
+          </p>
+        </div>
+      </ul>
+     </div>
+    {% endfor %}
+    </section>
+    {% else %}
+      Ops   :(
+    {% endif %}
+    {% if is_paginated %}
+    <ul class="pagination-list">
+      {% if page_obj.has_previous %}
+        <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+      {% else %}
+        <li class="pagination-link"><span>&laquo;</span></li>
+      {% endif %}
+      {% for i in paginator.page_range %}
+        {% if page_obj.number == i %}
+          <li class="pagination-link is-current"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+        {% else %}
+          <li><a href="?page={{ i }}">{{ i }}</a></li>
+        {% endif %}
+      {% endfor %}
+      {% if page_obj.has_next %}
+        <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+      {% else %}
+        <li class="pagination-link"><span>&raquo;</span></li>
+      {% endif %}
+    </ul>
+  {% endif %}
+{% endblock %}
